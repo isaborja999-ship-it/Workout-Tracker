@@ -1,8 +1,8 @@
-const express = require('express');
-const usersRouter = require('./routes/users.routes');
-const workoutsRouter = require('./routes/workouts.routes');
-const exercisesRouter = require('./routes/exercises.routes');
-const progressRouter = require('./routes/progress.routes');
+import express from 'express';
+import usersRouter from './routes/users.routes.js';
+import workoutsRouter from './routes/workouts.routes.js';
+import exercisesRouter from './routes/exercises.routes.js';
+import progressRouter from './routes/progress.routes.js';
 
 const app = express();
 
@@ -37,4 +37,4 @@ app.use((error, req, res, next) => { // eslint-disable-line no-unused-vars
   res.status(500).json({ error: 'Error interno del servidor' });
 });
 
-module.exports = app;
+export default app;

@@ -1,4 +1,4 @@
-const createResourceRouter = require('./resource.routes');
-const workoutsConfig = require('./workouts.config');
+import createResourceRouter from './resource.routes.js';
+import workoutsConfig from './workouts.config.js';
 
-module.exports = createResourceRouter(workoutsConfig);
+export default createResourceRouter(workoutsConfig);

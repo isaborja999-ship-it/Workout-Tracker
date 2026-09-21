@@ -1,5 +1,5 @@
-const express = require('express');
-const { missingRequiredFields } = require('./users.validation');
+import express from 'express';
+import { missingRequiredFields } from './users.validation.js';
 
 const router = express.Router();
 
@@ -74,4 +74,4 @@ router.delete('/:id', (req, res) => {
   return res.status(204).send();
 });
 
-module.exports = router;
+export default router;

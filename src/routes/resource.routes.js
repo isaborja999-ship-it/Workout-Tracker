@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 
 function createResourceRouter({ fields, label }) {
   const router = express.Router();
@@ -62,4 +62,4 @@ function createResourceRouter({ fields, label }) {
   return router;
 }
 
-module.exports = createResourceRouter;
+export default createResourceRouter;

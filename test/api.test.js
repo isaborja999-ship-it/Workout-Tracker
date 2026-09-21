@@ -1,7 +1,7 @@
-const assert = require('node:assert/strict');
-const http = require('node:http');
-const test = require('node:test');
-const app = require('../src/app');
+import assert from 'node:assert/strict';
+import http from 'node:http';
+import test from 'node:test';
+import app from '../src/app.js';
 
 function request(server, method, path, body) {
   return new Promise((resolve, reject) => {

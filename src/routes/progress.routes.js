@@ -1,4 +1,4 @@
-const createResourceRouter = require('./resource.routes');
-const progressConfig = require('./progress.config');
+import createResourceRouter from './resource.routes.js';
+import progressConfig from './progress.config.js';
 
-module.exports = createResourceRouter(progressConfig);
+export default createResourceRouter(progressConfig);
