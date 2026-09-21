@@ -1,5 +1,8 @@
 const express = require('express');
 const usersRouter = require('./routes/users.routes');
+const workoutsRouter = require('./routes/workouts.routes');
+const exercisesRouter = require('./routes/exercises.routes');
+const progressRouter = require('./routes/progress.routes');
 
 const app = express();
 
@@ -21,6 +24,9 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/users', usersRouter);
+app.use('/workouts', workoutsRouter);
+app.use('/exercises', exercisesRouter);
+app.use('/progress', progressRouter);
 
 app.use((req, res) => {
   res.status(404).json({ error: 'Ruta no encontrada' });
