@@ -1,14 +1,10 @@
 const express = require('express');
+const { missingRequiredFields } = require('./users.validation');
 
 const router = express.Router();
 
 // Datos temporales: se reemplazarán por MySQL al configurar la persistencia.
 const users = [];
-const requiredFields = ['name', 'email'];
-
-function missingRequiredFields(data) {
-  return requiredFields.filter((field) => !data[field] || String(data[field]).trim() === '');
-}
 
 router.get('/', (req, res) => {
   const { limit, search } = req.query;
