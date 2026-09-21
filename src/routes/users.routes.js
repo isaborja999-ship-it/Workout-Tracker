@@ -69,4 +69,13 @@ router.patch('/:id', (req, res) => {
   return res.status(200).json({ message: 'Usuario actualizado parcialmente', data: user });
 });
 
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id < 1) return res.status(400).json({ error: 'ID inválido' });
+  const index = users.findIndex((item) => item.id === id);
+  if (index === -1) return res.status(404).json({ error: 'Usuario no encontrado' });
+  users.splice(index, 1);
+  return res.status(204).send();
+});
+
 module.exports = router;
