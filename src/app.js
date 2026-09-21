@@ -1,4 +1,5 @@
 const express = require('express');
+const usersRouter = require('./routes/users.routes');
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.get('/', (req, res) => {
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok', service: 'workout-tracker-api' });
 });
+
+app.use('/users', usersRouter);
 
 app.use((req, res) => {
   res.status(404).json({ error: 'Ruta no encontrada' });
