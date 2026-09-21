@@ -45,4 +45,28 @@ router.post('/', (req, res) => {
   return res.status(201).json({ message: 'Usuario creado', data: user });
 });
 
+router.put('/:id', (req, res) => {
+  const id = Number(req.params.id);
+  const missing = missingRequiredFields(req.body);
+  if (!Number.isInteger(id) || id < 1) return res.status(400).json({ error: 'ID inválido' });
+  if (missing.length) return res.status(400).json({ error: 'PUT requiere el recurso completo', fields: missing });
+  const user = users.find((item) => item.id === id);
+  if (!user) return res.status(404).json({ error: 'Usuario no encontrado' });
+  user.name = req.body.name.trim();
+  user.email = req.body.email.trim();
+  return res.status(200).json({ message: 'Usuario actualizado', data: user });
+});
+
+router.patch('/:id', (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id < 1) return res.status(400).json({ error: 'ID inválido' });
+  const user = users.find((item) => item.id === id);
+  if (!user) return res.status(404).json({ error: 'Usuario no encontrado' });
+  const allowed = ['name', 'email'];
+  const fields = Object.keys(req.body).filter((field) => allowed.includes(field));
+  if (!fields.length) return res.status(400).json({ error: 'No hay campos actualizables' });
+  fields.forEach((field) => { user[field] = String(req.body[field]).trim(); });
+  return res.status(200).json({ message: 'Usuario actualizado parcialmente', data: user });
+});
+
 module.exports = router;
