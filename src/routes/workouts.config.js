@@ -1,4 +1,4 @@
-export default {
+export const workoutsConfig = {
   fields: ['name', 'description'],
   label: 'Rutina',
 };
