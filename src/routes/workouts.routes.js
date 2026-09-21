@@ -1,6 +1,4 @@
 const createResourceRouter = require('./resource.routes');
+const workoutsConfig = require('./workouts.config');
 
-module.exports = createResourceRouter({
-  fields: ['name', 'description'],
-  label: 'Rutina',
-});
+module.exports = createResourceRouter(workoutsConfig);
