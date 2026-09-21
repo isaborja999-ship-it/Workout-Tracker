@@ -1,6 +1,4 @@
 const createResourceRouter = require('./resource.routes');
+const progressConfig = require('./progress.config');
 
-module.exports = createResourceRouter({
-  fields: ['userId', 'workoutId', 'completedAt'],
-  label: 'Registro de progreso',
-});
+module.exports = createResourceRouter(progressConfig);
